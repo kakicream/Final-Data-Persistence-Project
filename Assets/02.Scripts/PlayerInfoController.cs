@@ -21,13 +21,13 @@ public class PlayerInfoController : MonoBehaviour
         LoadName();
         if (playerName == null)
         {
-            playerName = "AAA";
+            playerName = "AAA"; // Initially there's no player's name data
         }
         LoadHighScore();
         Debug.Log(playerName);
         Debug.Log(highScore);
     }
-
+    #region Save Player's Name
     [System.Serializable]
     class SavePlayerNameData
     {
@@ -56,7 +56,9 @@ public class PlayerInfoController : MonoBehaviour
             playerName = data.SD_playerName;
         }
     }
+    #endregion
 
+    #region Save High Score
     [System.Serializable]
     class SaveHighScoreData
     {
@@ -83,4 +85,5 @@ public class PlayerInfoController : MonoBehaviour
             highScore = data.SD_highScore;
         }
     }
+    #endregion
 }

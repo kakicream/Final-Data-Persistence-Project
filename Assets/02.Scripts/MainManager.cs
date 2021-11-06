@@ -12,7 +12,8 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
-    //public GameObject GameOverText;
+    // public GameObject GameOverText;
+    // I made new GameOverText gameobject using TMP
     public GameObject GameOverTextHighScore;
     private TextMeshProUGUI GameOverTextHigh;
 
@@ -25,19 +26,14 @@ public class MainManager : MonoBehaviour
     private int bestScoreSoFar;
     private string bestScoreHolder;
 
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
         bestScoreHolder = MenuUIController.bestScoreHolder;
         
         bestScoreSoFar = PlayerInfoController.Instance.highScore;
+
         BestScoreText.text = $"Best Score : {bestScoreHolder} : {bestScoreSoFar}";
         
-
-
         GameOverTextHigh = GameOverTextHighScore.GetComponent<TextMeshProUGUI>();
 
         const float step = 0.6f;
@@ -72,8 +68,7 @@ public class MainManager : MonoBehaviour
             }
         }
         else if (m_GameOver)
-        {
-                       
+        {              
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 // If game over, go back to menu scene, set the high score informations
@@ -93,8 +88,7 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         if (m_Points > bestScoreSoFar)
-        {
-            
+        {   
             PlayerInfoController.Instance.highScore = m_Points;
             GameOverTextHigh.SetText($"New Record!!!\nScore : {m_Points}\nPlayer : {PlayerInfoController.Instance.playerName}\nPress SPACEBAR to Restart");
         }
